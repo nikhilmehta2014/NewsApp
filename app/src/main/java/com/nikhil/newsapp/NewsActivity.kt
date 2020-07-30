@@ -1,11 +1,16 @@
 package com.nikhil.newsapp
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import androidx.activity.viewModels
+import com.nikhil.newsapp.base.BaseActivity
+import com.nikhil.newsapp.databinding.ActivityNewsBinding
 
-class NewsActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_news)
+class NewsActivity : BaseActivity<ActivityNewsBinding, NewsViewModel>() {
+
+    override val viewModel: NewsViewModel by viewModels()
+
+    override fun getLayoutRes() = R.layout.activity_news
+
+    override fun initViewModel(viewModel: NewsViewModel) {
+        binding.viewModel = viewModel
     }
 }

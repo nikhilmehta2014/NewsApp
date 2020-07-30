@@ -1,4 +1,4 @@
-package com.intigral.jawwytv.base
+package com.nikhil.newsapp.base
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes
