@@ -1,11 +1,11 @@
 package com.nikhil.newsapp.di
 
-import com.nikhil.newsapp.source.remote.NewsRemoteDataSource
-import com.nikhil.newsapp.source.remote.NewsRemoteDataSourceImpl
+import com.nikhil.newsapp.source.remote.AllNewsRemoteDataSource
+import com.nikhil.newsapp.source.remote.AllNewsRemoteDataSourceImpl
 import com.nikhil.newsapp.source.remote.retrofit.ApiEndPoints
 import com.nikhil.newsapp.source.remote.retrofit.NewsApiService
-import com.nikhil.newsapp.source.repository.NewsRepository
-import com.nikhil.newsapp.source.repository.NewsRepositoryImpl
+import com.nikhil.newsapp.source.repository.AllNewsRepository
+import com.nikhil.newsapp.source.repository.AllNewsRepositoryImpl
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -37,10 +37,10 @@ object NetworkModule {
     fun provideNewsApiService(retrofit: Retrofit):NewsApiService = retrofit.create(NewsApiService::class.java)
 
     @Provides
-    fun provideNewsRepository(remoteDataSource: NewsRemoteDataSource):NewsRepository =
-        NewsRepositoryImpl(remoteDataSource)
+    fun provideNewsRepository(remoteDataSource: AllNewsRemoteDataSource):AllNewsRepository =
+        AllNewsRepositoryImpl(remoteDataSource)
 
     @Provides
-    fun provideNewsRemoteDataSource(newsApiService: NewsApiService):NewsRemoteDataSource =
-        NewsRemoteDataSourceImpl(newsApiService)
+    fun provideNewsRemoteDataSource(newsApiService: NewsApiService):AllNewsRemoteDataSource =
+        AllNewsRemoteDataSourceImpl(newsApiService)
 }

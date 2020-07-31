@@ -74,6 +74,10 @@ dependencies {
     //Logging
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
+    //RecyclerView
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc01"
+
     testImplementation 'junit:junit:4.13'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

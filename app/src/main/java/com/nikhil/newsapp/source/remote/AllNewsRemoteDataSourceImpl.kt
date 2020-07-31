@@ -10,9 +10,9 @@ import kotlinx.coroutines.withContext
 import java.lang.Exception
 import javax.inject.Inject
 
-class NewsRemoteDataSourceImpl @Inject constructor(
+class AllNewsRemoteDataSourceImpl @Inject constructor(
     private val newsApiService: NewsApiService
-) : NewsRemoteDataSource {
+) : AllNewsRemoteDataSource {
 
     override suspend fun getAllNews(allNewsParams: AllNewsParams): Result<GetNewsResponseEntity> =
         withContext(Dispatchers.IO) {
