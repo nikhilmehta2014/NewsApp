@@ -1,4 +1,4 @@
-package com.nikhil.newsapp
+package com.nikhil.newsapp.ui.home
 
 import com.nikhil.newsapp.base.BaseViewModel
 
