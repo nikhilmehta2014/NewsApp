@@ -13,39 +13,46 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:layout_marginTop="20dp"
+        android:background="#F8BBD0">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_news_image"
             android:layout_width="150dp"
             android:layout_height="200dp"
-            android:scaleType="fitXY"
+            app:imageUrl="@{allNewsItem.urlToImage}"
+            app:placeholder="@{@drawable/ic_nav_codelabs}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_launcher_background" />
 
         <TextView
             android:id="@+id/tv_author"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:textStyle="bold"
+            android:text="@{allNewsItem.author}"
             app:layout_constraintStart_toEndOf="@id/iv_news_image"
             app:layout_constraintTop_toTopOf="@id/iv_news_image"
-            android:text="@{allNewsItem.author}"
             tools:hint="Author" />
 
         <TextView
             android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textColor="#1B5E20"
+            android:text="@{allNewsItem.title}"
             app:layout_constraintStart_toStartOf="@id/tv_author"
             app:layout_constraintTop_toBottomOf="@id/tv_author"
             tools:hint="Title" />
 
         <TextView
             android:id="@+id/tv_description"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textColor="#FF5722"
+            android:text="@{allNewsItem.description}"
             app:layout_constraintStart_toStartOf="@id/tv_author"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
             tools:hint="Description" />
@@ -56,7 +63,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ellipsize="end"
+            android:textStyle="italic"
+            android:textColor="#795548"
             android:maxLines="3"
+            android:text="@{allNewsItem.content}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_news_image"
             tools:hint="@string/dummy_content" />
@@ -66,6 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:text="@{allNewsItem.publishedAt}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_content"
             tools:hint="Published At" />

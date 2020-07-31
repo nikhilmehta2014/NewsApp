@@ -3,12 +3,15 @@ package com.nikhil.newsapp.ui.home
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.nikhil.newsapp.R
 import com.nikhil.newsapp.base.BaseActivity
 import com.nikhil.newsapp.data.AllNewsParams
 import com.nikhil.newsapp.databinding.ActivityNewsBinding
 import com.nikhil.newsapp.source.remote.response.GetNewsResponseEntity
+import com.nikhil.newsapp.utils.MarginItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class AllNewsActivity : BaseActivity<ActivityNewsBinding, AllNewsViewModel>() {
@@ -41,6 +44,15 @@ class AllNewsActivity : BaseActivity<ActivityNewsBinding, AllNewsViewModel>() {
             Observer { shouldShowAllNews ->
                 if (shouldShowAllNews) {
                     allNewsAdapter = AllNewsAdapter(allNewsArticles)
+                    binding.rvAllNews.apply {
+                        layoutManager = LinearLayoutManager(this@AllNewsActivity)
+                        adapter = allNewsAdapter
+                        addItemDecoration(
+                            MarginItemDecoration(
+                                resources.getDimension(R.dimen.default_padding).toInt()
+                            )
+                        )
+                    }
                 }
             }
         )
