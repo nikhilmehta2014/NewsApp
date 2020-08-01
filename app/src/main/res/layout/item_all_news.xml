@@ -17,81 +17,90 @@
         android:background="#F8BBD0"
         android:padding="5dp">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_news_image"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="#454545"
-            app:imageUrl="@{allNewsItem.urlToImage}"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_ripple"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:placeholder="@{@drawable/ic_nav_codelabs}"
-            tools:src="@drawable/ic_launcher_background" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tv_author"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="20dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text='@{allNewsItem.author ?? "No Author"}'
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/iv_news_image"
-            app:layout_constraintTop_toTopOf="@id/iv_news_image"
-            tools:hint="@string/dummy_content" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_news_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="#454545"
+                app:imageUrl="@{allNewsItem.urlToImage}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:placeholder="@{@drawable/ic_nav_codelabs}"
+                tools:src="@drawable/ic_launcher_background" />
 
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text='@{allNewsItem.title ?? "No Title"}'
-            android:textColor="#1B5E20"
-            app:layout_constraintStart_toStartOf="@id/tv_author"
-            app:layout_constraintTop_toBottomOf="@id/tv_author"
-            tools:hint="@string/dummy_content" />
+            <TextView
+                android:id="@+id/tv_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text='@{allNewsItem.author ?? "No Author"}'
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/iv_news_image"
+                app:layout_constraintTop_toTopOf="@id/iv_news_image"
+                tools:hint="@string/dummy_content" />
 
-        <TextView
-            android:id="@+id/tv_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:text='@{allNewsItem.description ?? "No Description"}'
-            android:textColor="#FF5722"
-            app:layout_constraintStart_toStartOf="@id/tv_author"
-            app:layout_constraintTop_toBottomOf="@id/tv_title"
-            tools:hint="@string/dummy_content" />
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text='@{allNewsItem.title ?? "No Title"}'
+                android:textColor="#1B5E20"
+                app:layout_constraintStart_toStartOf="@id/tv_author"
+                app:layout_constraintTop_toBottomOf="@id/tv_author"
+                tools:hint="@string/dummy_content" />
 
-        <TextView
-            android:id="@+id/tv_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:ellipsize="end"
-            android:maxLines="3"
-            android:text='@{allNewsItem.content ?? "No Content"}'
-            android:textColor="#795548"
-            android:textStyle="italic"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_news_image"
-            tools:hint="@string/dummy_content" />
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text='@{allNewsItem.description ?? "No Description"}'
+                android:textColor="#FF5722"
+                app:layout_constraintStart_toStartOf="@id/tv_author"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                tools:hint="@string/dummy_content" />
 
-        <TextView
-            android:id="@+id/tv_published_At"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:text="@{allNewsItem.getRequiredDateTimeFormat()}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_content"
-            tools:hint="Published At" />
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text='@{allNewsItem.content ?? "No Content"}'
+                android:textColor="#795548"
+                android:textStyle="italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_news_image"
+                tools:hint="@string/dummy_content" />
+
+            <TextView
+                android:id="@+id/tv_published_At"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:text="@{allNewsItem.getRequiredDateTimeFormat()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_content"
+                tools:hint="Published At" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
