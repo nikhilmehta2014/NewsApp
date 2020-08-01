@@ -1,8 +1,11 @@
 package com.nikhil.newsapp.ui.home
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
+import com.nikhil.newsapp.R
 import com.nikhil.newsapp.databinding.ItemAllNewsBinding
 import com.nikhil.newsapp.source.remote.response.GetNewsResponseEntity
 
@@ -12,7 +15,10 @@ class AllNewsAdapter(
 ) :
     RecyclerView.Adapter<AllNewsAdapter.AllNewsViewHolder>() {
 
+    private lateinit var context: Context
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllNewsViewHolder {
+        context = parent.context
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemAllNewsBinding.inflate(inflater)
         return AllNewsViewHolder(binding)
@@ -23,6 +29,7 @@ class AllNewsAdapter(
     }
 
     override fun onBindViewHolder(holder: AllNewsViewHolder, position: Int) {
+        holder.itemView.animation = AnimationUtils.loadAnimation(context, R.anim.fade_transition_animation)
         items?.get(position)?.let { holder.bind(it, clickListener) }
     }
 
