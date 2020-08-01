@@ -13,13 +13,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:layout_marginTop="20dp"
         android:background="#F8BBD0">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_news_image"
             android:layout_width="150dp"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
+            android:background="#454545"
             app:imageUrl="@{allNewsItem.urlToImage}"
             app:placeholder="@{@drawable/ic_nav_codelabs}"
             app:layout_constraintStart_toStartOf="parent"

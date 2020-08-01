@@ -30,7 +30,8 @@ class AllNewsActivity : BaseActivity<ActivityNewsBinding, AllNewsViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //TODO: Is this the right way to pass data by hardcoding here?
-        viewModel.getAllNews(AllNewsParams("bitcoin", "2020-06-30", "publishedAt"))
+        //Because of the free News API account, the limit is to search for last 30 days only
+        viewModel.getAllNews(AllNewsParams("bitcoin", "2020-07-10", "publishedAt"))
 
         viewModel.allNewsArticles.observe(
             this,

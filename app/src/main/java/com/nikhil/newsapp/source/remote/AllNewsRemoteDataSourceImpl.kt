@@ -7,6 +7,7 @@ import com.nikhil.newsapp.utils.Constants
 import com.nikhil.newsapp.utils.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 import java.lang.Exception
 import javax.inject.Inject
 
@@ -27,6 +28,7 @@ class AllNewsRemoteDataSourceImpl @Inject constructor(
                     val allNews = result.body()
                     Result.Success(allNews)
                 } else {
+                    Timber.d("NewsApp: result unsuccessful = ${result.message()}")
                     Result.Success(null)
                 }
             } catch (exception: Exception) {

@@ -15,13 +15,15 @@ class AllNewsAdapter(private val items: List<GetNewsResponseEntity.Article>?) :
         return AllNewsViewHolder(binding)
     }
 
-    override fun getItemCount() = items!!.size
+    override fun getItemCount(): Int {
+        return items?.size ?: 0
+    }
 
     override fun onBindViewHolder(holder: AllNewsViewHolder, position: Int) {
         items?.get(position)?.let { holder.bind(it) }
     }
 
-    inner class AllNewsViewHolder(val binding: ItemAllNewsBinding) :
+    inner class AllNewsViewHolder(private val binding: ItemAllNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: GetNewsResponseEntity.Article) {
             binding.allNewsItem = item
