@@ -7,7 +7,6 @@ import com.nikhil.newsapp.source.remote.retrofit.NewsApiService
 import com.nikhil.newsapp.source.repository.AllNewsRepository
 import com.nikhil.newsapp.source.repository.AllNewsRepositoryImpl
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -16,7 +15,6 @@ import dagger.hilt.android.components.ApplicationComponent
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
-import java.util.*
 import javax.inject.Singleton
 
 @Module
@@ -32,7 +30,7 @@ object NetworkModule {
             MoshiConverterFactory.create(
                 Moshi.Builder()
                     .add(KotlinJsonAdapterFactory())
-                    .add(Date::class.java, Rfc3339DateJsonAdapter())
+//                    .add(Date::class.java, Rfc3339DateJsonAdapter())
 //                    .add(CustomDateAdapter())
                     .build()
             )
