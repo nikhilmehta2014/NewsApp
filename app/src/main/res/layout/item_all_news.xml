@@ -13,9 +13,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
         android:layout_marginTop="20dp"
-        android:background="#F8BBD0">
+        android:background="#F8BBD0"
+        android:padding="5dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_news_image"
@@ -23,52 +23,65 @@
             android:layout_height="150dp"
             android:background="#454545"
             app:imageUrl="@{allNewsItem.urlToImage}"
-            app:placeholder="@{@drawable/ic_nav_codelabs}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:placeholder="@{@drawable/ic_nav_codelabs}"
             tools:src="@drawable/ic_launcher_background" />
 
         <TextView
             android:id="@+id/tv_author"
             android:layout_width="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
             android:layout_marginStart="10dp"
+            android:text='@{allNewsItem.author ?? "Empty"}'
             android:textStyle="bold"
-            android:text="@{allNewsItem.author}"
             app:layout_constraintStart_toEndOf="@id/iv_news_image"
             app:layout_constraintTop_toTopOf="@id/iv_news_image"
-            tools:hint="Author" />
+            tools:hint="@string/dummy_content" />
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text='@{allNewsItem.title ?? "Empty"}'
             android:textColor="#1B5E20"
-            android:text="@{allNewsItem.title}"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_author"
             app:layout_constraintTop_toBottomOf="@id/tv_author"
-            tools:hint="Title" />
+            tools:hint="@string/dummy_content" />
 
         <TextView
             android:id="@+id/tv_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text='@{allNewsItem.description ?? "Empty"}'
+            android:layout_marginEnd="20dp"
             android:textColor="#FF5722"
-            android:text="@{allNewsItem.description}"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_author"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
-            tools:hint="Description" />
+            tools:hint="@string/dummy_content" />
 
         <TextView
             android:id="@+id/tv_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
             android:ellipsize="end"
-            android:textStyle="italic"
-            android:textColor="#795548"
             android:maxLines="3"
             android:text="@{allNewsItem.content}"
+            android:textColor="#795548"
+            android:textStyle="italic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_news_image"
             tools:hint="@string/dummy_content" />
@@ -78,6 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
             android:text="@{allNewsItem.publishedAt}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_content"

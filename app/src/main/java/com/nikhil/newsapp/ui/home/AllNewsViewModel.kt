@@ -10,6 +10,7 @@ import com.nikhil.newsapp.source.repository.AllNewsRepository
 import com.nikhil.newsapp.utils.Result
 import com.nikhil.newsapp.utils.asLiveData
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class AllNewsViewModel @ViewModelInject constructor(
     private val repository: AllNewsRepository
@@ -29,8 +30,7 @@ class AllNewsViewModel @ViewModelInject constructor(
         viewModelScope.launch {
             when (val result = repository.getAllNews(allNewsParams)) {
                 is Result.Success -> {
-                    println("NewsVM = Success")
-                    println("result = $result")
+                    Timber.d("NewsVM = Success")
                     _isLoading.value = false
                     _allNewsArticles.value = result.data?.articles
                     _shouldShowAllNews.value=true

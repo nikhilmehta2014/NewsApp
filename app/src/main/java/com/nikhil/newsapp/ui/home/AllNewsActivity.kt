@@ -11,7 +11,6 @@ import com.nikhil.newsapp.databinding.ActivityNewsBinding
 import com.nikhil.newsapp.source.remote.response.GetNewsResponseEntity
 import com.nikhil.newsapp.utils.MarginItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class AllNewsActivity : BaseActivity<ActivityNewsBinding, AllNewsViewModel>() {
@@ -48,11 +47,7 @@ class AllNewsActivity : BaseActivity<ActivityNewsBinding, AllNewsViewModel>() {
                     binding.rvAllNews.apply {
                         layoutManager = LinearLayoutManager(this@AllNewsActivity)
                         adapter = allNewsAdapter
-                        addItemDecoration(
-                            MarginItemDecoration(
-                                resources.getDimension(R.dimen.default_padding).toInt()
-                            )
-                        )
+                        addItemDecoration(MarginItemDecoration(resources.getDimension(R.dimen.default_padding).toInt()))
                     }
                 }
             }

@@ -6,6 +6,7 @@ import com.nikhil.newsapp.source.remote.retrofit.ApiEndPoints
 import com.nikhil.newsapp.source.remote.retrofit.NewsApiService
 import com.nikhil.newsapp.source.repository.AllNewsRepository
 import com.nikhil.newsapp.source.repository.AllNewsRepositoryImpl
+import com.nikhil.newsapp.utils.moshiadapters.CustomDateAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -26,11 +27,14 @@ object NetworkModule {
     fun provideRetrofit(): Retrofit = Retrofit.Builder()
         .baseUrl(ApiEndPoints.BASE_URL)
         .addConverterFactory(ScalarsConverterFactory.create())
-        .addConverterFactory(MoshiConverterFactory.create(
-            Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
-        ))
+        .addConverterFactory(
+            MoshiConverterFactory.create(
+                Moshi.Builder()
+                    .add(KotlinJsonAdapterFactory())
+                    .add(CustomDateAdapter())
+                    .build()
+            )
+        )
         .build()
 
     @Provides
