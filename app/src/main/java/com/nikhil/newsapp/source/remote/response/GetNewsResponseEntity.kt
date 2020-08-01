@@ -1,6 +1,7 @@
 package com.nikhil.newsapp.source.remote.response
 
 import com.squareup.moshi.JsonClass
+import java.util.*
 
 @JsonClass(generateAdapter = true)
 data class GetNewsResponseEntity(
@@ -15,7 +16,7 @@ data class GetNewsResponseEntity(
         val description: String? = "",
         val url: String? = "",
         val urlToImage: String? = "",
-        val publishedAt: String? = "",
+        val publishedAt: Date? = null,
         val content: String? = ""
     ) {
         data class Source(
