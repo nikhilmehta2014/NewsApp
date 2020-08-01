@@ -1,6 +1,7 @@
 package com.nikhil.newsapp.ui.home
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -43,7 +44,9 @@ class AllNewsActivity : BaseActivity<ActivityNewsBinding, AllNewsViewModel>() {
             this,
             Observer { shouldShowAllNews ->
                 if (shouldShowAllNews) {
-                    allNewsAdapter = AllNewsAdapter(allNewsArticles)
+                    allNewsAdapter = AllNewsAdapter(allNewsArticles) { url ->
+                        onNewsItemClicked(url)
+                    }
                     binding.rvAllNews.apply {
                         layoutManager = LinearLayoutManager(this@AllNewsActivity)
                         adapter = allNewsAdapter
@@ -52,5 +55,9 @@ class AllNewsActivity : BaseActivity<ActivityNewsBinding, AllNewsViewModel>() {
                 }
             }
         )
+    }
+
+    private fun onNewsItemClicked(url: String) {
+        Toast.makeText(this, "url = $url", Toast.LENGTH_SHORT).show()
     }
 }
