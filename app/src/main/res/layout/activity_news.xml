@@ -12,12 +12,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="#e3ee33"
         android:layout_height="match_parent"
         tools:context=".ui.home.AllNewsActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_all_news"
             android:layout_width="match_parent"
+            android:background="#121e33"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
