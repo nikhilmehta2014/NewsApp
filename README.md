@@ -4,7 +4,7 @@ A simple app that shows different News based on "NewsAPI.org".
 
 ## Demo
 
-<img src="/art/NewsApp.gif" width="49%">
+<img src="/art/NewsApp movie.gif" width="49%">
 
 Project characteristics 🚀
 ---
