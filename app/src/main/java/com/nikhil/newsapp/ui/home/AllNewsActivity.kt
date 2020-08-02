@@ -1,6 +1,7 @@
 package com.nikhil.newsapp.ui.home
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
@@ -30,6 +31,9 @@ class AllNewsActivity : BaseActivity<ActivityNewsBinding, AllNewsViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        binding.shimmerLayout.startShimmer()
+
         //TODO: Is this the right way to pass data by hardcoding here?
         //Because of the free News API account, the limit is to search for last 30 days only
         if (NetworkUtil.isNetworkAvailable(this)) {
@@ -41,6 +45,8 @@ class AllNewsActivity : BaseActivity<ActivityNewsBinding, AllNewsViewModel>() {
         viewModel.allNewsArticles.observe(
             this,
             Observer {
+                binding.shimmerLayout.stopShimmer()
+                binding.shimmerLayout.visibility = View.GONE
                 allNewsArticles = it
             }
         )

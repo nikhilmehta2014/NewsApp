@@ -29,7 +29,8 @@ class AllNewsAdapter(
     }
 
     override fun onBindViewHolder(holder: AllNewsViewHolder, position: Int) {
-        holder.itemView.animation = AnimationUtils.loadAnimation(context, R.anim.fade_transition_animation)
+        //Fade transition for News Item
+//        holder.itemView.animation = AnimationUtils.loadAnimation(context, R.anim.fade_transition_animation)
         items?.get(position)?.let { holder.bind(it, clickListener) }
     }
 
