@@ -30,13 +30,13 @@ class AllNewsViewModel @ViewModelInject constructor(
         viewModelScope.launch {
             when (val result = repository.getAllNews(allNewsParams)) {
                 is Result.Success -> {
-                    Timber.d("NewsVM = Success")
+                    Timber.d("NewsVM = Result.Success = ${result.data}")
                     _isLoading.value = false
                     _allNewsArticles.value = result.data?.articles
                     _shouldShowAllNews.value=true
                 }
                 is Result.Error -> {
-                    println("NewsVM = Error")
+                    Timber.d("NewsVM = Error")
                 }
             }
         }

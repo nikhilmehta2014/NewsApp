@@ -28,11 +28,13 @@ class AllNewsRemoteDataSourceImpl @Inject constructor(
                     val allNews = result.body()
                     Result.Success(allNews)
                 } else {
-                    Timber.d("NewsApp: result unsuccessful = ${result.message()}")
+                    Timber.d("NewsApp: result unsuccessful")
+                    Timber.d("NewsApp: error code = ${result.code()}")
+                    Timber.d("NewsApp: error message = ${result.message()}")
                     Result.Success(null)
                 }
             } catch (exception: Exception) {
-                println("exception = ${exception.cause}")
+                Timber.d(exception)
                 Result.Error(exception)
             }
         }
