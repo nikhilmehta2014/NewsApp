@@ -11,6 +11,7 @@ import com.nikhil.newsapp.data.AllNewsParams
 import com.nikhil.newsapp.databinding.ActivityNewsBinding
 import com.nikhil.newsapp.source.remote.response.GetNewsResponseEntity
 import com.nikhil.newsapp.utils.MarginItemDecoration
+import com.nikhil.newsapp.utils.NetworkUtil
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,7 +32,11 @@ class AllNewsActivity : BaseActivity<ActivityNewsBinding, AllNewsViewModel>() {
         super.onCreate(savedInstanceState)
         //TODO: Is this the right way to pass data by hardcoding here?
         //Because of the free News API account, the limit is to search for last 30 days only
-        viewModel.getAllNews(AllNewsParams("bitcoin", "2020-07-10", "publishedAt"))
+        if (NetworkUtil.isNetworkAvailable(this)) {
+            viewModel.getAllNews(AllNewsParams("bitcoin", "2020-07-10", "publishedAt"))
+        } else {
+            Toast.makeText(this, "No Internet Available", Toast.LENGTH_SHORT).show()
+        }
 
         viewModel.allNewsArticles.observe(
             this,

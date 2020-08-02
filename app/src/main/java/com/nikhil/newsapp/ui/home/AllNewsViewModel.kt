@@ -42,5 +42,10 @@ class AllNewsViewModel @ViewModelInject constructor(
         }
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        Timber.d("VM onCleared called")
+    }
+
 
 }
