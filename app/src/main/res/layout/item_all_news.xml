@@ -28,13 +28,10 @@
                 android:id="@+id/iv_news_image"
                 android:layout_width="100dp"
                 android:layout_height="120dp"
-                android:background="@drawable/rect_rounded"
-                android:paddingHorizontal="5dp"
-                android:scaleType="matrix"
                 app:imageUrl="@{allNewsItem.urlToImage}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:placeholder="@{@drawable/ic_nav_codelabs}"
+                app:placeholder="@{@drawable/no_url}"
                 tools:src="@drawable/ic_launcher_background" />
 
             <TextView
