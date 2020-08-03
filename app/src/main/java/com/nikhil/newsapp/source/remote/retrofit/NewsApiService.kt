@@ -14,4 +14,11 @@ interface NewsApiService {
         @Query("sortBy") sortType: String,
         @Query("apiKey") apiKey: String
     ): Response<GetNewsResponseEntity>
+
+    @GET("v2/top-headlines")
+    suspend fun getTechNews(
+        @Query("country") country: String,
+        @Query("category") category: String,
+        @Query("apiKey") apiKey: String
+    ): Response<GetNewsResponseEntity>
 }

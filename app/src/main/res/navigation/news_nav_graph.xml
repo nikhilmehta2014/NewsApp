@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/news_nav_graph"
+    app:startDestination="@id/techNewsFragment2">
+
+    <fragment
+        android:id="@+id/techNewsFragment2"
+        android:name="com.nikhil.newsapp.ui.technews.TechNewsFragment"
+        android:label="TechNewsFragment" />
+    <fragment
+        android:id="@+id/savedNewsFragment2"
+        android:name="com.nikhil.newsapp.ui.savednews.SavedNewsFragment"
+        android:label="SavedNewsFragment" />
+    <fragment
+        android:id="@+id/searchNewsFragment2"
+        android:name="com.nikhil.newsapp.ui.searchnews.SearchNewsFragment"
+        android:label="SearchNewsFragment" />
+</navigation>
