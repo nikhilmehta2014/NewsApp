@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="allNewsItem"
-            type="com.nikhil.newsapp.source.remote.response.GetNewsResponseEntity.Article" />
+            name="article"
+            type="com.nikhil.newsapp.models.Article" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,7 +28,7 @@
                 android:id="@+id/iv_news_image"
                 android:layout_width="100dp"
                 android:layout_height="120dp"
-                app:imageUrl="@{allNewsItem.urlToImage}"
+                app:imageUrl="@{article.urlToImage}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:placeholder="@{@drawable/no_url}"
@@ -42,7 +42,7 @@
                 android:layout_marginEnd="20dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text='@{allNewsItem.author ?? "No Author"}'
+                android:text='@{article.author ?? "No Author"}'
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@id/iv_news_image"
                 app:layout_constraintTop_toTopOf="@id/iv_news_image"
@@ -55,7 +55,7 @@
                 android:layout_marginEnd="20dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text='@{allNewsItem.title ?? "No Title"}'
+                android:text='@{article.title ?? "No Title"}'
                 android:textColor="#1B5E20"
                 app:layout_constraintStart_toStartOf="@id/tv_author"
                 app:layout_constraintTop_toBottomOf="@id/tv_author"
@@ -68,7 +68,7 @@
                 android:layout_marginEnd="20dp"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:text='@{allNewsItem.description ?? "No Description"}'
+                android:text='@{article.description ?? "No Description"}'
                 android:textColor="#FF5722"
                 app:layout_constraintStart_toStartOf="@id/tv_author"
                 app:layout_constraintTop_toBottomOf="@id/tv_title"
@@ -81,7 +81,7 @@
                 android:layout_marginTop="10dp"
                 android:ellipsize="end"
                 android:maxLines="3"
-                android:text='@{allNewsItem.content ?? "No Content"}'
+                android:text='@{article.content ?? "No Content"}'
                 android:textColor="#795548"
                 android:textStyle="italic"
                 app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
-                android:text="@{allNewsItem.getRequiredDateTimeFormat()}"
+                android:text="@{article.getRequiredDateTimeFormat()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_content"
                 tools:hint="Published At" />

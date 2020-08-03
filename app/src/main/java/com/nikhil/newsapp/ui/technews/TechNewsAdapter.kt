@@ -3,48 +3,67 @@ package com.nikhil.newsapp.ui.technews
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.nikhil.newsapp.databinding.ItemAllNewsBinding
-import com.nikhil.newsapp.source.remote.response.GetNewsResponseEntity
+import com.nikhil.newsapp.R
+import com.nikhil.newsapp.databinding.ItemTechNewsBinding
+import com.nikhil.newsapp.models.Article
 
-class TechNewsAdapter(
-    private val items: List<GetNewsResponseEntity.Article>?,
-    private val clickListener: (String) -> Unit
-) :
-    RecyclerView.Adapter<TechNewsAdapter.AllNewsViewHolder>() {
+class TechNewsAdapter : RecyclerView.Adapter<TechNewsAdapter.TechNewsViewHolder>() {
 
-    private lateinit var context: Context
+    private var context: Context? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllNewsViewHolder {
+    private val differCallback = object : DiffUtil.ItemCallback<Article>() {
+        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
+            return oldItem.url == newItem.url
+        }
+
+        override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
+            return oldItem == newItem
+        }
+    }
+
+    val differ = AsyncListDiffer(this, differCallback)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TechNewsViewHolder {
         context = parent.context
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemAllNewsBinding.inflate(inflater)
-        return AllNewsViewHolder(binding)
+        return TechNewsViewHolder(
+            ItemTechNewsBinding.inflate(
+                LayoutInflater.from(context)
+            )
+        )
     }
 
     override fun getItemCount(): Int {
-        return items?.size ?: 0
+        println("differ.currentList.size = ${differ.currentList.size}")
+        return differ.currentList.size
     }
 
-    override fun onBindViewHolder(holder: AllNewsViewHolder, position: Int) {
+    private var onItemClickListener: ((Article) -> Unit)? = null
+
+    override fun onBindViewHolder(holder: TechNewsViewHolder, position: Int) {
         //Fade transition for News Item
-//        holder.itemView.animation = AnimationUtils.loadAnimation(context, R.anim.fade_transition_animation)
-        items?.get(position)?.let { holder.bind(it, clickListener) }
+        holder.itemView.animation =
+            AnimationUtils.loadAnimation(context, R.anim.fade_transition_animation)
+        val article = differ.currentList[position]
+        holder.itemView.apply {
+            setOnClickListener {
+                onItemClickListener?.let { it(article) }
+            }
+        }
+        holder.bind(article)
     }
 
-    inner class AllNewsViewHolder(private val binding: ItemAllNewsBinding) :
+    fun setOnItemClickListener(listener: (Article) -> Unit) {
+        onItemClickListener = listener
+    }
+
+    inner class TechNewsViewHolder(private val binding: ItemTechNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: GetNewsResponseEntity.Article, clickListener: (String) -> Unit) {
-            binding.allNewsItem = item
-            itemView.setOnClickListener {
-                /**
-                 * "allNewsItem" is introduced to avoid "Smart cast to 'GetNewsResponseEntity.Article' is impossible" error
-                 */
-                val allNewsItem = binding.allNewsItem
-                allNewsItem?.url?.let { url ->
-                    clickListener(url)
-                }
-            }
+        fun bind(item: Article) {
+            binding.article = item
             binding.executePendingBindings()
         }
     }

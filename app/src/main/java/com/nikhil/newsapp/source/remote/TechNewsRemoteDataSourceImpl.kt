@@ -1,7 +1,7 @@
 package com.nikhil.newsapp.source.remote
 
 import com.nikhil.newsapp.data.TechNewsParams
-import com.nikhil.newsapp.source.remote.response.GetNewsResponseEntity
+import com.nikhil.newsapp.models.NewsResponse
 import com.nikhil.newsapp.source.remote.retrofit.NewsApiService
 import com.nikhil.newsapp.utils.Constants
 import com.nikhil.newsapp.utils.Result
@@ -15,7 +15,7 @@ class TechNewsRemoteDataSourceImpl @Inject constructor(
     private val newsApiService: NewsApiService
 ) : TechNewsRemoteDataSource {
 
-    override suspend fun getTechNews(techNewsParams: TechNewsParams): Result<GetNewsResponseEntity> =
+    override suspend fun getTechNews(techNewsParams: TechNewsParams): Result<NewsResponse> =
         withContext(Dispatchers.IO) {
             return@withContext try {
                 val result = newsApiService.getTechNews(

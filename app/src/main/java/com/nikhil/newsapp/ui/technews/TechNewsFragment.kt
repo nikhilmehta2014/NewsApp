@@ -9,7 +9,7 @@ import com.nikhil.newsapp.R
 import com.nikhil.newsapp.base.BaseFragment
 import com.nikhil.newsapp.data.TechNewsParams
 import com.nikhil.newsapp.databinding.FragmentTechNewsBinding
-import com.nikhil.newsapp.source.remote.response.GetNewsResponseEntity
+import com.nikhil.newsapp.models.Article
 import com.nikhil.newsapp.ui.home.NewsActivity
 import com.nikhil.newsapp.ui.home.NewsViewModel
 import com.nikhil.newsapp.utils.MarginItemDecoration
@@ -28,7 +28,7 @@ class TechNewsFragment : BaseFragment<FragmentTechNewsBinding, NewsViewModel>() 
         const val CATEGORY = "technology"
     }
 
-    private var allNewsArticles: List<GetNewsResponseEntity.Article>? = null
+    private var allNewsArticles: List<Article>? = null
     private var techNewsAdapter: TechNewsAdapter? = null
 
     override fun getLayoutRes() = R.layout.fragment_tech_news
@@ -37,11 +37,12 @@ class TechNewsFragment : BaseFragment<FragmentTechNewsBinding, NewsViewModel>() 
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = (activity as NewsActivity).viewModel
+        setupRecyclerView()
 
         binding.shimmerLayout.startShimmer()
 
-        //Because of the free News API account, the limit is to search for last 30 days only
         if (NetworkUtil.isNetworkAvailable(activity as NewsActivity)) {
+            //Because of the free News API account, the limit is to search for last 30 days only
 //            viewModel.getAllNews(AllNewsParams(SEARCH_TERM, FROM_DATE, SORT_TYPE))
             viewModel.getTechNews(TechNewsParams(COUNTRY, CATEGORY))
         } else {
@@ -51,38 +52,24 @@ class TechNewsFragment : BaseFragment<FragmentTechNewsBinding, NewsViewModel>() 
         viewModel.allNewsArticles.observe(
             viewLifecycleOwner,
             Observer {
+                techNewsAdapter?.differ?.submitList(it.toList())
                 binding.shimmerLayout.stopShimmer()
                 binding.shimmerLayout.visibility = View.GONE
                 allNewsArticles = it
             }
         )
-
-        viewModel.shouldShowAllNews.observe(
-            viewLifecycleOwner,
-            Observer { shouldShowAllNews ->
-                if (shouldShowAllNews) {
-                    techNewsAdapter =
-                        TechNewsAdapter(
-                            allNewsArticles
-                        ) { url ->
-                            onNewsItemClicked(url)
-                        }
-                    binding.rvAllNews.apply {
-                        layoutManager = LinearLayoutManager(activity)
-                        adapter = techNewsAdapter
-                        addItemDecoration(
-                            MarginItemDecoration(
-                                resources.getDimension(R.dimen.default_padding).toInt()
-                            )
-                        )
-                    }
-                }
-            }
-        )
     }
 
-    private fun onNewsItemClicked(url: String) {
-        Toast.makeText(activity, "url = $url", Toast.LENGTH_SHORT).show()
+    private fun setupRecyclerView() {
+        techNewsAdapter = TechNewsAdapter()
+        binding.rvAllNews.apply {
+            adapter = techNewsAdapter
+            layoutManager = LinearLayoutManager(activity)
+            addItemDecoration(
+                MarginItemDecoration(
+                    resources.getDimension(R.dimen.default_padding).toInt()
+                )
+            )
+        }
     }
-
 }

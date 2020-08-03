@@ -1,21 +1,20 @@
 package com.nikhil.newsapp.source.remote
 
 import com.nikhil.newsapp.data.AllNewsParams
-import com.nikhil.newsapp.source.remote.response.GetNewsResponseEntity
+import com.nikhil.newsapp.models.NewsResponse
 import com.nikhil.newsapp.source.remote.retrofit.NewsApiService
 import com.nikhil.newsapp.utils.Constants
 import com.nikhil.newsapp.utils.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber
-import java.lang.Exception
 import javax.inject.Inject
 
 class AllNewsRemoteDataSourceImpl @Inject constructor(
     private val newsApiService: NewsApiService
 ) : AllNewsRemoteDataSource {
 
-    override suspend fun getAllNews(allNewsParams: AllNewsParams): Result<GetNewsResponseEntity> =
+    override suspend fun getAllNews(allNewsParams: AllNewsParams): Result<NewsResponse> =
         withContext(Dispatchers.IO) {
             return@withContext try {
                 val result = newsApiService.getAllNews(
