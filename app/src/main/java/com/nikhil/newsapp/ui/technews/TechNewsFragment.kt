@@ -14,7 +14,9 @@ import com.nikhil.newsapp.ui.home.NewsActivity
 import com.nikhil.newsapp.ui.home.NewsViewModel
 import com.nikhil.newsapp.utils.MarginItemDecoration
 import com.nikhil.newsapp.utils.NetworkUtil
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TechNewsFragment : BaseFragment<FragmentTechNewsBinding, NewsViewModel>() {
 
     companion object {
