@@ -21,10 +21,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class TechNewsFragment : BaseFragment<FragmentTechNewsBinding, NewsViewModel>() {
 
     companion object {
-//        const val SEARCH_TERM = "bitcoin"
-//        const val FROM_DATE = "2020-07-10"
-//        const val SORT_TYPE = "publishedAt"
-
         const val COUNTRY = "us"
         const val CATEGORY = "technology"
     }
