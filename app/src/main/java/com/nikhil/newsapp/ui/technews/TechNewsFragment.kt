@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nikhil.newsapp.R
 import com.nikhil.newsapp.base.BaseFragment
-import com.nikhil.newsapp.data.AllNewsParams
+import com.nikhil.newsapp.data.TechNewsParams
 import com.nikhil.newsapp.databinding.FragmentTechNewsBinding
 import com.nikhil.newsapp.source.remote.response.GetNewsResponseEntity
 import com.nikhil.newsapp.ui.home.NewsActivity
@@ -18,9 +18,12 @@ import com.nikhil.newsapp.utils.NetworkUtil
 class TechNewsFragment : BaseFragment<FragmentTechNewsBinding, NewsViewModel>() {
 
     companion object {
-        const val SEARCH_TERM = "bitcoin"
-        const val FROM_DATE = "2020-07-10"
-        const val SORT_TYPE = "publishedAt"
+//        const val SEARCH_TERM = "bitcoin"
+//        const val FROM_DATE = "2020-07-10"
+//        const val SORT_TYPE = "publishedAt"
+
+        const val COUNTRY = "us"
+        const val CATEGORY = "technology"
     }
 
     private var allNewsArticles: List<GetNewsResponseEntity.Article>? = null
@@ -37,7 +40,8 @@ class TechNewsFragment : BaseFragment<FragmentTechNewsBinding, NewsViewModel>() 
 
         //Because of the free News API account, the limit is to search for last 30 days only
         if (NetworkUtil.isNetworkAvailable(activity as NewsActivity)) {
-            viewModel.getAllNews(AllNewsParams(SEARCH_TERM, FROM_DATE, SORT_TYPE))
+//            viewModel.getAllNews(AllNewsParams(SEARCH_TERM, FROM_DATE, SORT_TYPE))
+            viewModel.getTechNews(TechNewsParams(COUNTRY, CATEGORY))
         } else {
             Toast.makeText(activity, "No Internet Available", Toast.LENGTH_SHORT).show()
         }

@@ -2,10 +2,14 @@ package com.nikhil.newsapp.di
 
 import com.nikhil.newsapp.source.remote.AllNewsRemoteDataSource
 import com.nikhil.newsapp.source.remote.AllNewsRemoteDataSourceImpl
+import com.nikhil.newsapp.source.remote.TechNewsRemoteDataSource
+import com.nikhil.newsapp.source.remote.TechNewsRemoteDataSourceImpl
 import com.nikhil.newsapp.source.remote.retrofit.ApiEndPoints
 import com.nikhil.newsapp.source.remote.retrofit.NewsApiService
 import com.nikhil.newsapp.source.repository.AllNewsRepository
 import com.nikhil.newsapp.source.repository.AllNewsRepositoryImpl
+import com.nikhil.newsapp.source.repository.TechNewsRepository
+import com.nikhil.newsapp.source.repository.TechNewsRepositoryImpl
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -47,4 +51,12 @@ object NetworkModule {
     @Provides
     fun provideNewsRemoteDataSource(newsApiService: NewsApiService):AllNewsRemoteDataSource =
         AllNewsRemoteDataSourceImpl(newsApiService)
+
+    @Provides
+    fun provideTechNewsRepository(remoteDataSource: TechNewsRemoteDataSource): TechNewsRepository =
+        TechNewsRepositoryImpl(remoteDataSource)
+
+    @Provides
+    fun provideTechNewsRemoteDataSource(newsApiService: NewsApiService):TechNewsRemoteDataSource =
+        TechNewsRemoteDataSourceImpl(newsApiService)
 }
