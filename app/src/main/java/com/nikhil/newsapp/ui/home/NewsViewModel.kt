@@ -12,7 +12,7 @@ import com.nikhil.newsapp.utils.asLiveData
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class AllNewsViewModel @ViewModelInject constructor(
+class NewsViewModel @ViewModelInject constructor(
     private val repository: AllNewsRepository
 ) : BaseViewModel() {
 

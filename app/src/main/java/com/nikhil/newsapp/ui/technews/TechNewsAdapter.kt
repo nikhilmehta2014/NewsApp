@@ -1,19 +1,17 @@
-package com.nikhil.newsapp.ui.home
+package com.nikhil.newsapp.ui.technews
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
-import com.nikhil.newsapp.R
 import com.nikhil.newsapp.databinding.ItemAllNewsBinding
 import com.nikhil.newsapp.source.remote.response.GetNewsResponseEntity
 
-class AllNewsAdapter(
+class TechNewsAdapter(
     private val items: List<GetNewsResponseEntity.Article>?,
     private val clickListener: (String) -> Unit
 ) :
-    RecyclerView.Adapter<AllNewsAdapter.AllNewsViewHolder>() {
+    RecyclerView.Adapter<TechNewsAdapter.AllNewsViewHolder>() {
 
     private lateinit var context: Context
 

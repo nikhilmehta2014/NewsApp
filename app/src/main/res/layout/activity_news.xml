@@ -7,44 +7,41 @@
 
         <variable
             name="viewModel"
-            type="com.nikhil.newsapp.ui.home.AllNewsViewModel" />
+            type="com.nikhil.newsapp.ui.home.NewsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.home.AllNewsActivity">
+        android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_all_news"
+        <FrameLayout
+            android:id="@+id/fl_fragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmer_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:orientation="vertical">
-
-            <LinearLayout
+            <fragment
+                android:id="@+id/newsNavHostFragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                app:defaultNavHost="true" />
 
-                <include layout="@layout/item_shimmer" />
+        </FrameLayout>
 
-                <include layout="@layout/item_shimmer" />
-
-                <include layout="@layout/item_shimmer" />
-
-                <include layout="@layout/item_shimmer" />
-
-                <include layout="@layout/item_shimmer" />
-            </LinearLayout>
-        </com.facebook.shimmer.ShimmerFrameLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_navigation_menu" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
