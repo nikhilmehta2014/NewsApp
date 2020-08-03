@@ -11,8 +11,8 @@ import com.nikhil.newsapp.base.BaseFragment
 import com.nikhil.newsapp.data.TechNewsParams
 import com.nikhil.newsapp.databinding.FragmentTechNewsBinding
 import com.nikhil.newsapp.models.Article
-import com.nikhil.newsapp.ui.home.NewsActivity
-import com.nikhil.newsapp.ui.home.NewsViewModel
+import com.nikhil.newsapp.ui.NewsActivity
+import com.nikhil.newsapp.ui.NewsViewModel
 import com.nikhil.newsapp.utils.MarginItemDecoration
 import com.nikhil.newsapp.utils.NetworkUtil
 import dagger.hilt.android.AndroidEntryPoint

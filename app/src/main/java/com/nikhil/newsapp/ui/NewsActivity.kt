@@ -1,4 +1,4 @@
-package com.nikhil.newsapp.ui.home
+package com.nikhil.newsapp.ui
 
 import android.os.Bundle
 import androidx.activity.viewModels

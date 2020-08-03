@@ -1,4 +1,4 @@
-package com.nikhil.newsapp.ui.home
+package com.nikhil.newsapp.ui
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
