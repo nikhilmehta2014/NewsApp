@@ -9,6 +9,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SavedNewsFragment : BaseFragment<FragmentSavedNewsBinding, NewsViewModel>() {
 
-    override fun getLayoutRes() = R.layout.fragment_search_news
+    override fun getLayoutRes() = R.layout.fragment_saved_news
 
 }
