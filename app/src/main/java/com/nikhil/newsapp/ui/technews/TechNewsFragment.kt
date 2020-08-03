@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nikhil.newsapp.R
+import com.nikhil.newsapp.adapters.NewsAdapter
 import com.nikhil.newsapp.base.BaseFragment
 import com.nikhil.newsapp.data.TechNewsParams
 import com.nikhil.newsapp.databinding.FragmentTechNewsBinding
@@ -29,7 +30,7 @@ class TechNewsFragment : BaseFragment<FragmentTechNewsBinding, NewsViewModel>() 
     }
 
     private var allNewsArticles: List<Article>? = null
-    private var techNewsAdapter: TechNewsAdapter? = null
+    private var newsAdapter: NewsAdapter? = null
 
     override fun getLayoutRes() = R.layout.fragment_tech_news
 
@@ -52,7 +53,7 @@ class TechNewsFragment : BaseFragment<FragmentTechNewsBinding, NewsViewModel>() 
         viewModel.allNewsArticles.observe(
             viewLifecycleOwner,
             Observer {
-                techNewsAdapter?.differ?.submitList(it.toList())
+                newsAdapter?.differ?.submitList(it.toList())
                 binding.shimmerLayout.stopShimmer()
                 binding.shimmerLayout.visibility = View.GONE
                 allNewsArticles = it
@@ -61,9 +62,9 @@ class TechNewsFragment : BaseFragment<FragmentTechNewsBinding, NewsViewModel>() 
     }
 
     private fun setupRecyclerView() {
-        techNewsAdapter = TechNewsAdapter()
+        newsAdapter = NewsAdapter()
         binding.rvAllNews.apply {
-            adapter = techNewsAdapter
+            adapter = newsAdapter
             layoutManager = LinearLayoutManager(activity)
             addItemDecoration(
                 MarginItemDecoration(

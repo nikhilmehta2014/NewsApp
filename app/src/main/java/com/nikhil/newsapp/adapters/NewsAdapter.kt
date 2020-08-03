@@ -1,4 +1,4 @@
-package com.nikhil.newsapp.ui.technews
+package com.nikhil.newsapp.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import com.nikhil.newsapp.R
 import com.nikhil.newsapp.databinding.ItemTechNewsBinding
 import com.nikhil.newsapp.models.Article
 
-class TechNewsAdapter : RecyclerView.Adapter<TechNewsAdapter.TechNewsViewHolder>() {
+class NewsAdapter : RecyclerView.Adapter<NewsAdapter.TechNewsViewHolder>() {
 
     private var context: Context? = null
 
