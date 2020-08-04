@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nikhil.newsapp.R
 import com.nikhil.newsapp.adapters.NewsAdapter
@@ -35,6 +36,16 @@ class TechNewsFragment : BaseFragment<FragmentTechNewsBinding, NewsViewModel>() 
 
         viewModel = (activity as NewsActivity).viewModel
         setupRecyclerView()
+
+        newsAdapter?.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("article", it)
+            }
+            findNavController().navigate(
+                R.id.action_techNewsFragment_to_articleFragment,
+                bundle
+            )
+        }
 
         binding.shimmerLayout.startShimmer()
 

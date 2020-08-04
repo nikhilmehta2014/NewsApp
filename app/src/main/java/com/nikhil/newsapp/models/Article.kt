@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.nikhil.newsapp.utils.DateTimeUtil
+import java.io.Serializable
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -24,7 +25,7 @@ data class Article(
     val urlToImage: String? = null,
     val publishedAt: String? = null,
     val content: String? = null
-) {
+) : Serializable {
     @RequiresApi(Build.VERSION_CODES.O)
     fun getRequiredDateTimeFormat(): String {
         val localDateTime = LocalDateTime.parse(

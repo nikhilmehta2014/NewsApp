@@ -10,7 +10,7 @@
         android:name="com.nikhil.newsapp.ui.technews.TechNewsFragment"
         android:label="TechNewsFragment">
         <action
-            android:id="@+id/action_techNewsFragment2_to_articleFragment"
+            android:id="@+id/action_techNewsFragment_to_articleFragment"
             app:destination="@id/articleFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -22,7 +22,7 @@
         android:name="com.nikhil.newsapp.ui.savednews.SavedNewsFragment"
         android:label="SavedNewsFragment">
         <action
-            android:id="@+id/action_savedNewsFragment2_to_articleFragment"
+            android:id="@+id/action_savedNewsFragment_to_articleFragment"
             app:destination="@id/articleFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -34,7 +34,7 @@
         android:name="com.nikhil.newsapp.ui.searchnews.SearchNewsFragment"
         android:label="SearchNewsFragment">
         <action
-            android:id="@+id/action_searchNewsFragment2_to_articleFragment"
+            android:id="@+id/action_searchNewsFragment_to_articleFragment"
             app:destination="@id/articleFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -44,6 +44,10 @@
     <fragment
         android:id="@+id/articleFragment"
         android:name="com.nikhil.newsapp.ui.article.ArticleFragment"
-        android:label="fragment_article"
-        tools:layout="@layout/fragment_article" />
+        android:label="ArticleFragment" >
+        <argument
+            android:name="article"
+            app:argType="com.nikhil.newsapp.models.Article" />
+    </fragment>
+
 </navigation>
