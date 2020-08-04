@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.webkit.WebViewClient
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import com.nikhil.newsapp.R
 import com.nikhil.newsapp.base.BaseFragment
 import com.nikhil.newsapp.databinding.FragmentArticleBinding
@@ -29,6 +30,10 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding, NewsViewModel>() {
             }
         }
 
+        binding.fab.setOnClickListener {
+            viewModel.saveArticle(article)
+            Snackbar.make(view, "Article saved successfully", Snackbar.LENGTH_SHORT).show()
+        }
     }
 
 }

@@ -7,6 +7,7 @@ import com.nikhil.newsapp.base.BaseViewModel
 import com.nikhil.newsapp.data.SearchedNewsParams
 import com.nikhil.newsapp.data.TechNewsParams
 import com.nikhil.newsapp.models.Article
+import com.nikhil.newsapp.source.repository.SavedNewsRepository
 import com.nikhil.newsapp.source.repository.SearchedNewsRepository
 import com.nikhil.newsapp.source.repository.TechNewsRepository
 import com.nikhil.newsapp.utils.Result
@@ -16,7 +17,8 @@ import timber.log.Timber
 
 class NewsViewModel @ViewModelInject constructor(
     private val techNewsRepository: TechNewsRepository,
-    private val searchedNewsRepository: SearchedNewsRepository
+    private val searchedNewsRepository: SearchedNewsRepository,
+    private val savedNewsRepository: SavedNewsRepository
 ) : BaseViewModel() {
 
     private val _isLoading = MutableLiveData<Boolean>()
@@ -63,6 +65,16 @@ class NewsViewModel @ViewModelInject constructor(
                 }
             }
         }
+    }
+
+    fun saveArticle(article: Article) = viewModelScope.launch {
+        savedNewsRepository.upsert(article)
+    }
+
+    fun getSavedNews() = savedNewsRepository.getSavedNews()
+
+    fun deleteArticle(article: Article) = viewModelScope.launch {
+        savedNewsRepository.deleteArticle(article)
     }
 
     override fun onCleared() {
