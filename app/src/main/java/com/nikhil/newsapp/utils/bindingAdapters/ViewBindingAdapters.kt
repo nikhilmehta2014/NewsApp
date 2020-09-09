@@ -16,6 +16,10 @@ fun imageUrl(imageView: ImageView, imageUrl: String?, placeholder: Drawable?) {
     imageUri(imageView, imageUrl?.toUri(), placeholder)
 }
 
+/**
+ * Placeholders cannot have rounded corners even if [RoundedCorners] fun is applies because:
+ * https://github.com/bumptech/glide/issues/1212
+ */
 @BindingAdapter(value = ["imageUri", "placeholder"], requireAll = false)
 fun imageUri(imageView: ImageView, imageUri: Uri?, placeholder: Drawable?) {
     when (imageUri) {
@@ -23,6 +27,7 @@ fun imageUri(imageView: ImageView, imageUri: Uri?, placeholder: Drawable?) {
             Timber.d("Unsetting image url")
             Glide.with(imageView)
                 .load(placeholder)
+                .transform(RoundedCorners(40))
                 .into(imageView)
         }
         else -> {

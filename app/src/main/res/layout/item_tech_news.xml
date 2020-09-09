@@ -10,17 +10,21 @@
             type="com.nikhil.newsapp.models.Article" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:layout_marginTop="20dp"
-        android:background="#69F0AE"
-        android:padding="5dp">
+        android:background="@color/white"
+        android:padding="5dp"
+        app:cardCornerRadius="40dp"
+        app:cardElevation="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_ripple"
+            android:padding="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -100,6 +104,5 @@
                 tools:hint="Published At" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

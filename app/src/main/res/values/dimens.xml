@@ -2,5 +2,8 @@
 <resources>
 
     <dimen name="default_padding">8dp</dimen>
+    <dimen name="divider">1dp</dimen>
+    <dimen name="_5dp">5dp</dimen>
+    <dimen name="_50dp">50dp</dimen>
 
 </resources>
