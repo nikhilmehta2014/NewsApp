@@ -14,7 +14,7 @@ interface NewsApiService {
         @Query("from") fromDate: String,
         @Query("sortBy") sortType: String,
         @Query("apiKey") apiKey: String
-    ): Response<NewsResponse>
+    ): NewsResponse
 
     @GET("v2/top-headlines")
     suspend fun getTechNews(
