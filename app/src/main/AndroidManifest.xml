@@ -21,7 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.TechNewsActivity"></activity>
+        <activity android:name=".ui.TechNewsActivity" />
+        <activity android:name=".ui.bitcoin.BitcoinActivity" />
     </application>
 
 </manifest>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.nikhil.newsapp.R
 import com.nikhil.newsapp.ui.TechNewsActivity
+import com.nikhil.newsapp.ui.bitcoin.BitcoinActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +15,9 @@ class MainActivity : AppCompatActivity() {
 
         tv_tech_news.setOnClickListener {
             startActivity(Intent(this, TechNewsActivity::class.java))
+        }
+        tv_bitcoin_news.setOnClickListener {
+            startActivity(Intent(this, BitcoinActivity::class.java))
         }
     }
 }

@@ -29,4 +29,12 @@ interface NewsApiService {
         @Query("page") pageNumber: Int = 1,
         @Query("apiKey") apiKey: String = API_KEY
     ): Response<NewsResponse>
+
+    @GET("v2/everything")
+    suspend fun getBitcoinNews(
+        @Query("q") searchTerm: String,
+        @Query("from") fromDate: String,
+        @Query("sortBy") sortType: String,
+        @Query("apiKey") apiKey: String
+    ): Response<NewsResponse>
 }
