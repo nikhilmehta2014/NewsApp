@@ -15,7 +15,7 @@ import com.nikhil.newsapp.utils.asLiveData
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class NewsViewModel @ViewModelInject constructor(
+class TechNewsViewModel @ViewModelInject constructor(
     private val techNewsRepository: TechNewsRepository,
     private val searchedNewsRepository: SearchedNewsRepository,
     private val savedNewsRepository: SavedNewsRepository

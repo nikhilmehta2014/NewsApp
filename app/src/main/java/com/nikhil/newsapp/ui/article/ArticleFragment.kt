@@ -8,10 +8,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.nikhil.newsapp.R
 import com.nikhil.newsapp.base.BaseFragment
 import com.nikhil.newsapp.databinding.FragmentArticleBinding
-import com.nikhil.newsapp.ui.NewsActivity
-import com.nikhil.newsapp.ui.NewsViewModel
+import com.nikhil.newsapp.ui.TechNewsActivity
+import com.nikhil.newsapp.ui.TechNewsViewModel
 
-class ArticleFragment : BaseFragment<FragmentArticleBinding, NewsViewModel>() {
+class ArticleFragment : BaseFragment<FragmentArticleBinding, TechNewsViewModel>() {
 
     override fun getLayoutRes() = R.layout.fragment_article
 
@@ -20,7 +20,7 @@ class ArticleFragment : BaseFragment<FragmentArticleBinding, NewsViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = (activity as NewsActivity).viewModel
+        viewModel = (activity as TechNewsActivity).viewModel
         val article = args.article
 
         binding.webview.apply {

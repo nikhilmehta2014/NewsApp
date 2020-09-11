@@ -6,23 +6,24 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.nikhil.newsapp.R
 import com.nikhil.newsapp.base.BaseActivity
-import com.nikhil.newsapp.databinding.ActivityNewsBinding
+import com.nikhil.newsapp.databinding.ActivityTechNewsBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_news.*
+import kotlinx.android.synthetic.main.activity_tech_news.*
 
 @AndroidEntryPoint
-class NewsActivity : BaseActivity<ActivityNewsBinding, NewsViewModel>() {
+class TechNewsActivity : BaseActivity<ActivityTechNewsBinding, TechNewsViewModel>() {
 
-    override val viewModel: NewsViewModel by viewModels()
+    override val viewModel: TechNewsViewModel by viewModels()
 
-    override fun getLayoutRes() = R.layout.activity_news
+    override fun getLayoutRes() = R.layout.activity_tech_news
 
-    override fun initViewModel(viewModel: NewsViewModel) {
+    override fun initViewModel(viewModel: TechNewsViewModel) {
         binding.viewModel = viewModel
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        title = this.getString(R.string.news_tech)
 
         binding.bottomNavigationView.setupWithNavController(newsNavHostFragment.findNavController())
     }

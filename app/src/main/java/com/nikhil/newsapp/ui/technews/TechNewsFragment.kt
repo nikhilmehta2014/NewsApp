@@ -12,14 +12,14 @@ import com.nikhil.newsapp.base.BaseFragment
 import com.nikhil.newsapp.data.TechNewsParams
 import com.nikhil.newsapp.databinding.FragmentTechNewsBinding
 import com.nikhil.newsapp.models.Article
-import com.nikhil.newsapp.ui.NewsActivity
-import com.nikhil.newsapp.ui.NewsViewModel
+import com.nikhil.newsapp.ui.TechNewsActivity
+import com.nikhil.newsapp.ui.TechNewsViewModel
 import com.nikhil.newsapp.utils.MarginItemDecoration
 import com.nikhil.newsapp.utils.NetworkUtil
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TechNewsFragment : BaseFragment<FragmentTechNewsBinding, NewsViewModel>() {
+class TechNewsFragment : BaseFragment<FragmentTechNewsBinding, TechNewsViewModel>() {
 
     companion object {
         const val COUNTRY = "us"
@@ -34,7 +34,7 @@ class TechNewsFragment : BaseFragment<FragmentTechNewsBinding, NewsViewModel>() 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = (activity as NewsActivity).viewModel
+        viewModel = (activity as TechNewsActivity).viewModel
         setupRecyclerView()
 
         newsAdapter?.setOnItemClickListener {
@@ -49,7 +49,7 @@ class TechNewsFragment : BaseFragment<FragmentTechNewsBinding, NewsViewModel>() 
 
         binding.shimmerLayout.startShimmer()
 
-        if (NetworkUtil.isNetworkAvailable(activity as NewsActivity)) {
+        if (NetworkUtil.isNetworkAvailable(activity as TechNewsActivity)) {
             //Because of the free News API account, the limit is to search for last 30 days only
 //            viewModel.getAllNews(AllNewsParams(SEARCH_TERM, FROM_DATE, SORT_TYPE))
             viewModel.getTechNews(TechNewsParams(COUNTRY, CATEGORY))

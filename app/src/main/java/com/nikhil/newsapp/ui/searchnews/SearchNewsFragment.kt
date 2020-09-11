@@ -12,8 +12,8 @@ import com.nikhil.newsapp.base.BaseFragment
 import com.nikhil.newsapp.data.SearchedNewsParams
 import com.nikhil.newsapp.databinding.FragmentSearchNewsBinding
 import com.nikhil.newsapp.models.Article
-import com.nikhil.newsapp.ui.NewsActivity
-import com.nikhil.newsapp.ui.NewsViewModel
+import com.nikhil.newsapp.ui.TechNewsActivity
+import com.nikhil.newsapp.ui.TechNewsViewModel
 import com.nikhil.newsapp.utils.Constants.SEARCH_NEWS_TIME_DELAY
 import com.nikhil.newsapp.utils.MarginItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,7 +23,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class SearchNewsFragment : BaseFragment<FragmentSearchNewsBinding, NewsViewModel>() {
+class SearchNewsFragment : BaseFragment<FragmentSearchNewsBinding, TechNewsViewModel>() {
 
     companion object {
         const val PAGE = 1
@@ -37,7 +37,7 @@ class SearchNewsFragment : BaseFragment<FragmentSearchNewsBinding, NewsViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = (activity as NewsActivity).viewModel
+        viewModel = (activity as TechNewsActivity).viewModel
         setupRecyclerView()
 
         newsAdapter?.setOnItemClickListener {

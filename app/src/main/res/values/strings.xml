@@ -7,4 +7,6 @@
     <string name="news_tech">Tech News</string>
     <string name="news_saved">Saved News</string>
     <string name="news_search">Search</string>
+
+    <string name="bitcoin_news">Bitcoin News</string>
 </resources>

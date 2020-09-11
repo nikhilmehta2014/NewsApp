@@ -12,13 +12,13 @@ import com.nikhil.newsapp.R
 import com.nikhil.newsapp.adapters.NewsAdapter
 import com.nikhil.newsapp.base.BaseFragment
 import com.nikhil.newsapp.databinding.FragmentSavedNewsBinding
-import com.nikhil.newsapp.ui.NewsActivity
-import com.nikhil.newsapp.ui.NewsViewModel
+import com.nikhil.newsapp.ui.TechNewsActivity
+import com.nikhil.newsapp.ui.TechNewsViewModel
 import com.nikhil.newsapp.utils.MarginItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SavedNewsFragment : BaseFragment<FragmentSavedNewsBinding, NewsViewModel>() {
+class SavedNewsFragment : BaseFragment<FragmentSavedNewsBinding, TechNewsViewModel>() {
 
     private lateinit var newsAdapter: NewsAdapter
 
@@ -27,7 +27,7 @@ class SavedNewsFragment : BaseFragment<FragmentSavedNewsBinding, NewsViewModel>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = (activity as NewsActivity).viewModel
+        viewModel = (activity as TechNewsActivity).viewModel
         setupRecyclerView()
 
         newsAdapter?.setOnItemClickListener {
