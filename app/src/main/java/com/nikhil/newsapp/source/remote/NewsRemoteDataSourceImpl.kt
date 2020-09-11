@@ -1,6 +1,6 @@
 package com.nikhil.newsapp.source.remote
 
-import com.nikhil.newsapp.data.AllNewsParams
+import com.nikhil.newsapp.data.NewsParams
 import com.nikhil.newsapp.models.NewsResponse
 import com.nikhil.newsapp.source.remote.retrofit.NewsApiService
 import com.nikhil.newsapp.utils.Constants
@@ -10,17 +10,17 @@ import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
 
-class AllNewsRemoteDataSourceImpl @Inject constructor(
+class NewsRemoteDataSourceImpl @Inject constructor(
     private val newsApiService: NewsApiService
-) : AllNewsRemoteDataSource {
+) : NewsRemoteDataSource {
 
-    override suspend fun getAllNews(allNewsParams: AllNewsParams): Result<NewsResponse> =
+    override suspend fun getAllNews(newsParams: NewsParams): Result<NewsResponse> =
         withContext(Dispatchers.IO) {
             return@withContext try {
                 val result = newsApiService.getAllNews(
-                    allNewsParams.searchTerm,
-                    allNewsParams.fromDate,
-                    allNewsParams.sortType,
+                    newsParams.searchTerm,
+                    newsParams.fromDate,
+                    newsParams.sortType,
                     Constants.API_KEY
                 )
                 if (result.isSuccessful) {

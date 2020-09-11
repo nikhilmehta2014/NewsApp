@@ -14,12 +14,12 @@ import dagger.hilt.android.components.ApplicationComponent
 object RepositoryModule {
 
     @Provides
-    fun provideNewsRepository(remoteDataSource: AllNewsRemoteDataSource): AllNewsRepository =
-        AllNewsRepositoryImpl(remoteDataSource)
+    fun provideNewsRepository(remoteDataSource: NewsRemoteDataSource): NewsRepository =
+        NewsRepositoryImpl(remoteDataSource)
 
     @Provides
-    fun provideNewsRemoteDataSource(newsApiService: NewsApiService): AllNewsRemoteDataSource =
-        AllNewsRemoteDataSourceImpl(newsApiService)
+    fun provideNewsRemoteDataSource(newsApiService: NewsApiService): NewsRemoteDataSource =
+        NewsRemoteDataSourceImpl(newsApiService)
 
     @Provides
     fun provideTechNewsRepository(remoteDataSource: TechNewsRemoteDataSource): TechNewsRepository =
