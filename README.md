@@ -32,6 +32,6 @@ Built With 🛠
 Coming Soon 🔜
 ---
 
-- Kotlin Flow Integration
+- Kotlin Flow Integration -> Done 
 - Caching support
 - Offline App support
