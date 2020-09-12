@@ -41,13 +41,16 @@ class BitcoinActivity : BaseActivity<ActivityBitcoinNewsBinding, BitcoinViewMode
         title = this.getString(R.string.bitcoin_news)
         setupRecyclerView()
 
-        viewModel.getBitcoinNews(
-            NewsParams(
-                SEARCH_TERM,
-                LocalDate.now().minusDays(5).toString(),
-                SORT_BY
+        viewModel.getCurrentDate()
+        viewModel.currentDate.observe(this, Observer { currentDate ->
+            viewModel.getBitcoinNews(
+                NewsParams(
+                    SEARCH_TERM,
+                    currentDate,
+                    SORT_BY
+                )
             )
-        )
+        })
 
         viewModel.newsResponse.observe(this, Observer {
             newsAdapter?.differ?.submitList(it.articles)

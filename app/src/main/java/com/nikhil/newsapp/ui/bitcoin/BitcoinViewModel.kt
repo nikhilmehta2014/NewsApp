@@ -21,6 +21,20 @@ class BitcoinViewModel @ViewModelInject constructor(
     val newsResponse: LiveData<NewsResponse>
         get() = _newsResponse
 
+    private val _currentDate = MutableLiveData<String>()
+    val currentDate: LiveData<String>
+        get() = _currentDate
+
+    fun getCurrentDate() {
+        viewModelScope.launch {
+            bitcoinNewsRepository.getCurrentDate()
+                .collect {
+                    _currentDate.value = it
+                }
+        }
+    }
+
+
     fun getBitcoinNews(newsParams: NewsParams) {
         viewModelScope.launch {
             bitcoinNewsRepository.getAllNews(newsParams)

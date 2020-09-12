@@ -14,13 +14,15 @@ import java.util.*
 object DateUtils {
     @RequiresApi(Build.VERSION_CODES.O)
     fun asDate(localDate: LocalDate): Date {
-        return Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()
+        return Date.from(
+            localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()
         )
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun asDate(localDateTime: LocalDateTime): Date {
-        return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant()
+        return Date.from(
+            localDateTime.atZone(ZoneId.systemDefault()).toInstant()
         )
     }
 
@@ -33,4 +35,7 @@ object DateUtils {
     fun asLocalDateTime(date: Date): LocalDateTime {
         return Instant.ofEpochMilli(date.time).atZone(ZoneId.systemDefault()).toLocalDateTime()
     }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getCurrentDate() = LocalDate.now().minusDays(5).toString()
 }

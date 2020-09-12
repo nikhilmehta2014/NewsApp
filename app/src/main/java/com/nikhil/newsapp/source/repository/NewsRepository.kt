@@ -8,4 +8,6 @@ interface NewsRepository {
 
     suspend fun getAllNews(newsParams: NewsParams): Flow<NewsResponse>
 
+    suspend fun getCurrentDate(): Flow<String>
+
 }
