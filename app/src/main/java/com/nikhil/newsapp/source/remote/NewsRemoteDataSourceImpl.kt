@@ -16,7 +16,7 @@ class NewsRemoteDataSourceImpl @Inject constructor(
 
     override suspend fun getAllNews(newsParams: NewsParams): Flow<NewsResponse> =
         flow {
-            val result = newsApiService.getAllNews(
+            val result = newsApiService.getBitcoinNews(
                 newsParams.searchTerm,
                 newsParams.fromDate,
                 newsParams.sortType,

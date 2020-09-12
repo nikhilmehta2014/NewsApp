@@ -1,7 +1,9 @@
 package com.nikhil.newsapp.ui.bitcoin
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nikhil.newsapp.R
@@ -12,13 +14,13 @@ import com.nikhil.newsapp.databinding.ActivityBitcoinNewsBinding
 import com.nikhil.newsapp.models.Article
 import com.nikhil.newsapp.utils.MarginItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
+import java.time.LocalDate
 
 @AndroidEntryPoint
 class BitcoinActivity : BaseActivity<ActivityBitcoinNewsBinding, BitcoinViewModel>() {
 
     companion object {
         const val SEARCH_TERM = "bitcoin"
-        const val FROM_DATE = "2020-08-11"
         const val SORT_BY = "publishedAt"
     }
 
@@ -33,12 +35,19 @@ class BitcoinActivity : BaseActivity<ActivityBitcoinNewsBinding, BitcoinViewMode
         binding.viewModel = viewModel
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         title = this.getString(R.string.bitcoin_news)
         setupRecyclerView()
 
-        viewModel.getBitcoinNews(NewsParams(SEARCH_TERM, FROM_DATE, SORT_BY))
+        viewModel.getBitcoinNews(
+            NewsParams(
+                SEARCH_TERM,
+                LocalDate.now().minusDays(5).toString(),
+                SORT_BY
+            )
+        )
 
         viewModel.newsResponse.observe(this, Observer {
             newsAdapter?.differ?.submitList(it.articles)

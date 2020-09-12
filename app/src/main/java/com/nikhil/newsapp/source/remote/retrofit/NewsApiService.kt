@@ -36,5 +36,5 @@ interface NewsApiService {
         @Query("from") fromDate: String,
         @Query("sortBy") sortType: String,
         @Query("apiKey") apiKey: String
-    ): Response<NewsResponse>
+    ): NewsResponse
 }
