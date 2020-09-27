@@ -1,6 +1,7 @@
 package com.nikhil.newsapp.models
 
 import android.os.Build
+import androidx.annotation.NonNull
 import androidx.annotation.RequiresApi
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -15,11 +16,13 @@ import java.util.*
     tableName = "articles"
 )
 data class Article(
-    @PrimaryKey
+//    @ColumnInfo(name = "id")
+//    @PrimaryKey(autoGenerate = true)
     var id: Int? = 0,
     val source: Source? = null,
     val author: String? = null,
-    val title: String? = null,
+    @NonNull @PrimaryKey
+    val title: String,
     val description: String? = null,
     val url: String? = null,
     val urlToImage: String? = null,
