@@ -9,7 +9,7 @@ import com.nikhil.newsapp.models.Article
 
 @Database(
     entities = [Article::class],
-    version = 4,
+    version = 1,
     exportSchema = false
 )
 

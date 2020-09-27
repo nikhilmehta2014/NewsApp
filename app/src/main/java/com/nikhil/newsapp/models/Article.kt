@@ -1,8 +1,8 @@
 package com.nikhil.newsapp.models
 
 import android.os.Build
-import androidx.annotation.NonNull
 import androidx.annotation.RequiresApi
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.nikhil.newsapp.utils.DateTimeUtil
@@ -16,12 +16,11 @@ import java.util.*
     tableName = "articles"
 )
 data class Article(
-//    @ColumnInfo(name = "id")
-//    @PrimaryKey(autoGenerate = true)
-    var id: Int? = 0,
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    var id: Long = 0,
     val source: Source? = null,
     val author: String? = null,
-    @NonNull @PrimaryKey
     val title: String,
     val description: String? = null,
     val url: String? = null,
