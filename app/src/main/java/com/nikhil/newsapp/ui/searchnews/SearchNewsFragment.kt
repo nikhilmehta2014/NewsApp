@@ -6,6 +6,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.nikhil.library.hideKeyboard
 import com.nikhil.newsapp.R
 import com.nikhil.newsapp.adapters.NewsAdapter
 import com.nikhil.newsapp.base.BaseFragment
@@ -41,6 +42,7 @@ class SearchNewsFragment : BaseFragment<FragmentSearchNewsBinding, TechNewsViewM
         setupRecyclerView()
 
         newsAdapter?.setOnItemClickListener {
+            hideKeyboard()
             val bundle = Bundle().apply {
                 putSerializable("article", it)
             }

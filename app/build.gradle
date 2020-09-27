@@ -100,7 +100,7 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9'
 
     //Kextend
-    implementation 'com.github.nikhilmehta2014:Kextend:v1.0.0'
+    implementation 'com.github.nikhilmehta2014:Kextend:v1.0.1'
 
     testImplementation 'junit:junit:4.13'
 
