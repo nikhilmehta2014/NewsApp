@@ -99,6 +99,9 @@ dependencies {
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9'
 
+    //Jitpack Publish Example
+    implementation 'com.github.nikhilmehta2014:Jitpack-Publish-Example:v1.0.0'
+
     testImplementation 'junit:junit:4.13'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
