@@ -1,6 +1,5 @@
 package com.nikhil.newsapp.ui
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.nikhil.newsapp.base.BaseViewModel
@@ -12,10 +11,13 @@ import com.nikhil.newsapp.source.repository.SearchedNewsRepository
 import com.nikhil.newsapp.source.repository.TechNewsRepository
 import com.nikhil.newsapp.utils.Result
 import com.nikhil.newsapp.utils.asLiveData
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
-class TechNewsViewModel @ViewModelInject constructor(
+@HiltViewModel
+class TechNewsViewModel @Inject constructor(
     private val techNewsRepository: TechNewsRepository,
     private val searchedNewsRepository: SearchedNewsRepository,
     private val savedNewsRepository: SavedNewsRepository

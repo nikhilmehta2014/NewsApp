@@ -1,6 +1,5 @@
 package com.nikhil.newsapp.ui.bitcoin
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -8,12 +7,15 @@ import com.nikhil.newsapp.base.BaseViewModel
 import com.nikhil.newsapp.data.NewsParams
 import com.nikhil.newsapp.models.NewsResponse
 import com.nikhil.newsapp.source.repository.NewsRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class BitcoinViewModel @ViewModelInject constructor(
+@HiltViewModel
+class BitcoinViewModel @Inject constructor(
     private val bitcoinNewsRepository: NewsRepository
 ) : BaseViewModel() {
 
