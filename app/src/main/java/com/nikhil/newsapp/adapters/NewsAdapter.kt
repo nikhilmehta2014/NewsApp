@@ -31,7 +31,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.TechNewsViewHolder>() {
         context = parent.context
         return TechNewsViewHolder(
             ItemTechNewsBinding.inflate(
-                LayoutInflater.from(context)
+                LayoutInflater.from(context), parent, false
             )
         )
     }
